@@ -4,6 +4,8 @@ Ten real-world human-in-the-loop approval flows, built on
 [`agent-approval-machine`](https://www.npmjs.com/package/agent-approval-machine) and rendered with
 **Vue 3.5 + Vuetify 3.7 + Vite 6 + TypeScript**.
 
+**Live: https://mzubairhassan18.github.io/agent-approval-machine-demo-vue/**
+
 This is one of three parallel demos. The React/Next.js and Angular demos render **exactly the same
 ten use cases, in the same order, with the same items, flags, failure messages and arrival timing** —
 only the framework glue differs. That is the point of the library: the state is portable, the UI is
