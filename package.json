@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build:pages": "node scripts/build-pages.mjs",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",
     "store:check": "node scripts/store-check.mjs",

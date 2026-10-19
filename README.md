@@ -63,6 +63,21 @@ npm run dev          # http://localhost:5173
 | `npm run typecheck`    | `vue-tsc --noEmit`                                                       |
 | `npm run store:check`  | headless Node check of the store — no DOM, no framework, no bundler       |
 | `npm run render:check` | renders `src/App.vue` through `vue/server-renderer` and asserts on the markup |
+| `npm run build:pages`  | builds, then writes the site to `docs/` for GitHub Pages                  |
+
+### Where the live demo comes from
+
+No CI and no external host. `npm run build:pages` builds the site and writes it to `docs/`, which
+GitHub Pages serves (source: `main`, `/docs`):
+
+```bash
+npm run build:pages
+git add docs && git commit -m "chore: rebuild pages" && git push
+```
+
+Vite's `base: "./"` already emits relative asset URLs, so one build works both at the root
+(`vite preview`) and under the Pages subpath. The script also writes `docs/.nojekyll`, so Pages'
+Jekyll step cannot silently drop files.
 
 ### The store check
 
