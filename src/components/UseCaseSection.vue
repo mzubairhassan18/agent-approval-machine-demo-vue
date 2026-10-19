@@ -20,14 +20,23 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 /** Tracks the one-time arrival per section: it is "forgotten" by Reset. */
 let arrived = false;
 
+/** Items that already burned their one failing attempt, so a retry recovers. */
+const failedOnce = new Set<string>();
+
 /** The fake provider: succeeds for everything the use case does not fail. */
 function partition(batch: UseCaseItem[]): ApprovalResult<UseCaseItem> {
   const succeeded: UseCaseItem[] = [];
   const failed: { item: UseCaseItem; error: string }[] = [];
   for (const item of batch) {
     const error = props.useCase.fail?.[item.id];
-    if (error) failed.push({ item, error });
-    else succeeded.push(item);
+    // Like a real provider that rate-limits: the first attempt fails, the retry
+    // goes through — which is what the failure messages promise.
+    if (error && !failedOnce.has(item.id)) {
+      failedOnce.add(item.id);
+      failed.push({ item, error });
+    } else {
+      succeeded.push(item);
+    }
   }
   return { succeeded, failed };
 }
@@ -142,6 +151,7 @@ function retry() {
 }
 function reset() {
   arrived = false;
+  failedOnce.clear();
   focusedId.value = null;
   focusedDraft.value = "";
   store.reset(props.useCase.items.map((item) => ({ ...item })));
