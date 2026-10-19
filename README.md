@@ -51,7 +51,7 @@ watch an item land as `queued` and get promoted the moment the batch settles.
 ## How to run it
 
 ```bash
-npm install          # installs agent-approval-machine from the local tarball
+npm install          # installs agent-approval-machine ^0.1.0 from npm
 npm run dev          # http://localhost:5173
 ```
 
@@ -143,8 +143,8 @@ straight into the store config.
 npm install agent-approval-machine
 ```
 
-> This repo installs it from a local tarball while 0.1.0 is being published:
-> `"agent-approval-machine": "file:D:/framework/_pkgs/agent-approval-machine-0.1.0.tgz"`.
+> Installed from npm: `"agent-approval-machine": "^0.1.0"`. The published package is a few kB, so
+> `npm install` is quick.
 
 ### 2. Create the store
 
