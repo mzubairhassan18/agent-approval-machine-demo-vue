@@ -6,6 +6,9 @@ Ten real-world human-in-the-loop approval flows, built on
 
 **Live: https://mzubairhassan18.github.io/agent-approval-machine-demo-vue/**
 
+> Changing this UI, or how it deploys? [`notes/PROJECTS.md`](https://github.com/mzubairhassan18/agent-approval-machine/blob/main/notes/PROJECTS.md)
+> in the library repo maps all four repos and names the file to open for each kind of change.
+
 This is one of three parallel demos. The React/Next.js and Angular demos render **exactly the same
 ten use cases, in the same order, with the same items, flags, failure messages and arrival timing** —
 only the framework glue differs. That is the point of the library: the state is portable, the UI is
